@@ -18,6 +18,6 @@ public class Movement : MonoBehaviour
     { 
         float movex = Input.GetAxis("Horizontal") * Time.deltaTime * velocity;
         float movey = Input.GetAxis("Vertical") * Time.deltaTime * velocity;
-        transform.Translate(movex, 0, movey);
+        transform.Translate(movey, 0, -movex);
     }
 }
