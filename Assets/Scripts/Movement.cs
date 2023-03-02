@@ -7,6 +7,8 @@ public class Movement : MonoBehaviour
 
     
     public float velocity = 5;
+    private int hitObstacles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,4 +22,13 @@ public class Movement : MonoBehaviour
         float movey = Input.GetAxis("Vertical") * Time.deltaTime * velocity;
         transform.Translate(movey, 0, -movex);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag != "Hit")
+        {
+            hitObstacles++;
+            Debug.Log($"You hit {hitObstacles} obstacles");
+        }
+    }
+
 }

@@ -4,8 +4,23 @@ using UnityEngine;
 
 public class CheckCollision : MonoBehaviour
 {
+
+    private MeshRenderer meshRenderer;
+    private int hitObstacles;
+
+    private void Start()
+    {
+        meshRenderer = GetComponent<MeshRenderer>();
+    }
+
     private void OnCollisionEnter(UnityEngine.Collision collision)
     {
-        Debug.Log("You hit me!");
+        if(collision.collider.tag == "Player" && gameObject.tag != "Hit")
+        {
+            hitObstacles++;
+            Debug.Log($"You hit {hitObstacles} obstacles");
+            meshRenderer.material.color = Color.black;
+        }
+            gameObject.tag = "Hit";
     }
 }
